@@ -17,6 +17,18 @@ export const Login = () => {
 		[login.token]
 	);
 
+	const loginFunc = () => {
+		login.login(email, password);
+		setEmail("");
+		setPassword("");
+	};
+
+	const enterKeyPress = ev => {
+		if (ev.key == "Enter") {
+			loginFunc();
+		}
+	};
+
 	return (
 		<div className="mx-auto mt-5 w-50">
 			<form>
@@ -32,6 +44,7 @@ export const Login = () => {
 						aria-describedby="emailHelp"
 						value={email}
 						onChange={ev => setEmail(ev.target.value)}
+						onKeyPress={ev => enterKeyPress(ev)}
 					/>
 					<div id="emailHelp" className="form-text">
 						We never share your email with anyone else.
@@ -47,10 +60,11 @@ export const Login = () => {
 						id="exampleInputPassword1"
 						value={password}
 						onChange={ev => setPassword(ev.target.value)}
+						onKeyPress={ev => enterKeyPress(ev)}
 					/>
 				</div>
 
-				<button type="button" className="btn btn-primary" onClick={() => login.login(email, password)}>
+				<button type="button" className="btn btn-primary" onClick={() => loginFunc()}>
 					Login
 				</button>
 			</form>

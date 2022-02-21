@@ -1,5 +1,5 @@
 ### Register Request
-POST https://3001-aquamarine-reindeer-ssu21utt.ws-us20.gitpod.io/api/register
+POST https://3001-karlacuevasc-messagingap-p33kwr14wxe.ws-us33.gitpod.io/api/register
 Content-Type: application/json
 
 {
