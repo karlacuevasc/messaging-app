@@ -53,6 +53,9 @@ export const Login = () => {
 				<button type="button" className="btn btn-primary" onClick={() => login.login(email, password)}>
 					Login
 				</button>
+				<a type="button" href="/register" className="btn btn-outline-secondary ms-2">
+					Register
+				</a>
 			</form>
 		</div>
 	);
