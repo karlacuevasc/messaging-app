@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router";
 import create from "zustand";
 import { persist } from "zustand/middleware";
+import { RegisterBanner } from "../component/registerBanner";
 
 export const useAuth = create(
 	persist(
@@ -67,42 +68,44 @@ export const Register = () => {
 		[register.success]
 	);
 	return (
-		<div className="mx-auto mt-5 w-50">
-			<form>
-				{register.error && <div className="alert alert-danger">Error at register</div>}
-				<div className="mb-3">
-					<label htmlFor="exampleInputEmail1" className="form-label">
-						Email address
-					</label>
-					<input
-						type="email"
-						className="form-control"
-						id="exampleInputEmail1"
-						aria-describedby="emailHelp"
-						value={email}
-						onChange={ev => setEmail(ev.target.value)}
-					/>
-					<div id="emailHelp" className="form-text">
-						We never share your email with anyone else.
+		<div>
+			<RegisterBanner />
+			<div className="mx-auto mt-5 w-50">
+				<form>
+					{register.error && <div className="alert alert-danger">Error at register</div>}
+					<div className="mb-3">
+						<input
+							type="email"
+							placeholder="Email"
+							className="email form-control"
+							id="exampleInputEmail1"
+							aria-describedby="emailHelp"
+							value={email}
+							onChange={ev => setEmail(ev.target.value)}
+						/>
+						<div id="emailHelp" className="neverShare form-text">
+							<i>*We never share your email with anyone else</i>
+						</div>
 					</div>
-				</div>
-				<div className="mb-3">
-					<label htmlFor="exampleInputPassword1" className="form-label">
-						Password
-					</label>
-					<input
-						type="password"
-						className="form-control"
-						id="exampleInputPassword1"
-						value={password}
-						onChange={ev => setPassword(ev.target.value)}
-					/>
-				</div>
+					<div className="mb-3">
+						<input
+							type="password"
+							placeholder="Password"
+							className="password form-control"
+							id="exampleInputPassword1"
+							value={password}
+							onChange={ev => setPassword(ev.target.value)}
+						/>
+					</div>
 
-				<button type="button" className="btn btn-primary" onClick={() => register.register(email, password)}>
-					Register
-				</button>
-			</form>
+					<button
+						type="button"
+						className="register btn btn-dark"
+						onClick={() => register.register(email, password)}>
+						Register
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 };
