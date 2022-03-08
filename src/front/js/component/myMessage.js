@@ -1,5 +1,5 @@
 import React from "react";
 
 export const MyMessage = () => {
-	return <div>MyMessage</div>;
+	return <div>Hello</div>;
 };
