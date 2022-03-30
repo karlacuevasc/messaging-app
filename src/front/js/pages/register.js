@@ -67,6 +67,14 @@ export const Register = () => {
 		},
 		[register.success]
 	);
+
+	const handleEnter = event => {
+		console.log(event);
+		if (event.keyCode == "13") {
+			register.register(email, password);
+		}
+	};
+
 	return (
 		<div>
 			<RegisterBanner />
@@ -95,6 +103,7 @@ export const Register = () => {
 							id="exampleInputPassword1"
 							value={password}
 							onChange={ev => setPassword(ev.target.value)}
+							onKeyDown={ev => handleEnter(ev)}
 						/>
 					</div>
 

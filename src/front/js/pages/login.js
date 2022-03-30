@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { useAuth } from "./register";
 import { Banner } from "../component/loginBanner";
-import "/Users/karlacuevas/Documents/messaging-app/src/front/styles/login.scss";
+import "../../styles/login.scss";
 
 export const Login = () => {
-	const [email, setEmail] = React.useState("");
-	const [password, setPassword] = React.useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const history = useHistory();
 	const login = useAuth();
@@ -19,6 +19,13 @@ export const Login = () => {
 		},
 		[login.token]
 	);
+
+	const handleEnter = event => {
+		console.log(event);
+		if (event.keyCode == "13") {
+			login.login(email, password);
+		}
+	};
 
 	return (
 		<div>
@@ -53,6 +60,7 @@ export const Login = () => {
 							id="exampleInputPassword1"
 							value={password}
 							onChange={ev => setPassword(ev.target.value)}
+							onKeyDown={ev => handleEnter(ev)}
 						/>
 					</div>
 

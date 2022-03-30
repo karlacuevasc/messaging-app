@@ -1,5 +1,5 @@
 import React from "react";
-import "/Users/karlacuevas/Documents/messaging-app/src/front/styles/registerBanner.scss";
+import "../../styles/registerBanner.scss";
 
 export const RegisterBanner = () => {
 	return (
